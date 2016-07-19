@@ -31,7 +31,7 @@ function entireQuery() {
 	    'ScheduleState', 'c_KanbanState', 'Tasks', 'Blocked', 'BlockedReason', 'c_ReleasePriority', 
 	    'PlanEstimate', 'Projects', 'c_PreviousEstimate', 'State', 'c_StoryRank', 'c_EpicRank', 'c_TPO', 'Milestones', 'Owner',
 	    'LeafStoryPlanEstimateTotal', 'AcceptedLeafStoryPlanEstimateTotal', 'LeafStoryCount', 'UnEstimatedLeafStoryCount',
-	    'AcceptedLeafStoryCount', 'Ready', 'Release', 'AcceptedDate', 'c_GAPS'],
+	    'AcceptedLeafStoryCount', 'Ready', 'Release', 'AcceptedDate', 'c_GAPS', 'c_Architect'],
 	   	query: queryUtils.where('Project', '=', '/project/50982925414') //info dev
 	   	.or('Project', '=', '/project/50982926429') //finance
         .or('Project', '=', '/project/50983112863') //qwod
@@ -56,7 +56,7 @@ function entireQuery() {
             'Epic.LeafStoryCount', 'Epic.UnEstimatedLeafStoryCount', 'Epic.AcceptedLeafStoryCount', 'c_GroomingState',
             'ScheduleState', 'Iteration.Name', 'Iteration.State', 'Ready', 'Project.Name', 'Owner._refObjectName', 'Epic.c_TPO', 
             'Release.Name', 'c_StoryRank', 'FormattedID', 'Name', 'c_ReleasePriority', 'c_KanbanState', 'Parent.Name', 'Blocked', 
-            'BlockedReason', 'Epic.Milestones._tagsNameArray[0].Name'];
+            'BlockedReason', 'Epic.Milestones._tagsNameArray[0].Name', 'c_TPO', 'c_Architect'];
 
 	        var theResults = result.Results;
 	       	for (var i = 0; i <= theResults.length-1; i++) {
