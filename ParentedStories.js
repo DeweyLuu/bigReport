@@ -31,7 +31,7 @@ function entireQuery() {
 	    'ScheduleState', 'c_KanbanState', 'Tasks', 'Blocked', 'BlockedReason', 'c_ReleasePriority', 
 	    'PlanEstimate', 'Projects', 'c_PreviousEstimate', 'State', 'c_StoryRank', 'c_EpicRank', 'c_TPO', 'Milestones', 'Owner',
 	    'LeafStoryPlanEstimateTotal', 'AcceptedLeafStoryPlanEstimateTotal', 'LeafStoryCount', 'UnEstimatedLeafStoryCount',
-	    'AcceptedLeafStoryCount', 'Ready', 'Release', 'AcceptedDate', 'c_GAPS', 'c_Architect'],
+	    'AcceptedLeafStoryCount', 'Ready', 'Release', 'AcceptedDate', 'c_GAPS', 'c_Architect', 'ReleaseDate', 'ReleaseStartDate'],
 	   	query: queryUtils.where('Project', '=', '/project/50982925414') //info dev
 	   	.or('Project', '=', '/project/50982926429') //finance
         .or('Project', '=', '/project/50983112863') //qwod
@@ -51,7 +51,8 @@ function entireQuery() {
 	    } else {
 
             var fields = ['Theme.FormattedID', 'Theme.Name', 'Theme.State.Name','Theme.c_Projects', 'Theme.c_ReleasePriority', 
-            'Epic.c_EpicRank', 'Epic.FormattedID', 'Epic.c_Gaps','Epic.c_ReleasePriority', 'Epic.Name', 'Epic.State.Name', 'PlanEstimate', 
+            'Epic.c_EpicRank', 'Epic.FormattedID', 'Epic.c_Gaps','Epic.c_ReleasePriority', 'Epic.Name', 'Epic.Release.Name', 
+            'Epic.Release.ReleaseStartDate', 'Epic.Release.ReleaseDate', 'Epic.State.Name', 'PlanEstimate', 
             'Epic.c_PreviousEstimate', 'Epic.LeafStoryPlanEstimateTotal', 'Epic.AcceptedLeafStoryPlanEstimateTotal',
             'Epic.LeafStoryCount', 'Epic.UnEstimatedLeafStoryCount', 'Epic.AcceptedLeafStoryCount', 'c_GroomingState',
             'ScheduleState', 'Iteration.Name', 'Iteration.State', 'Ready', 'Project.Name', 'Owner._refObjectName', 'Epic.c_TPO', 
@@ -59,6 +60,7 @@ function entireQuery() {
             'BlockedReason', 'Epic.Milestones._tagsNameArray[0].Name', 'c_TPO', 'c_Architect'];
 
 	        var theResults = result.Results;
+	        //console.log(theResults[0].Epic.Release);
 	       	for (var i = 0; i <= theResults.length-1; i++) {
 	        	
 	        	bigStories.push(theResults[i]);
@@ -85,6 +87,7 @@ function entireQuery() {
 	        	gotDate5 = "0" + gotDate5;
 	        }
 	        var theTimeStamp = gotDate3 + gotDate1 + gotDate2 + "-" +  gotDate4 + gotDate5;
+
 	        console.log(theTimeStamp);        
 	        
 	        json2csv({data: bigStories, fields: fields}, function(err, csv) {
