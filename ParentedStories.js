@@ -41,6 +41,7 @@ function entireQuery() {
         .or('Project', '=', '/project/56200604007') //prism dev
         .and('DirectChildrenCount', '<', '1'),
 	    
+	    
 	    scope: {
 	    	workspace: '/workspace/48926045219',
 	    },
